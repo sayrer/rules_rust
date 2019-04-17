@@ -328,10 +328,27 @@ _rust_test_attrs = {
     ),
 }
 
+def _platform_to_host_transition(settings, attr):
+    if attr.crate_type == "proc-macro":
+        return {
+            "//command_line_option:platforms": "@bazel_tools//platforms:host_platform",
+        }
+    else:
+        return {
+            "//command_line_option:platforms": "@bazel_tools//platforms:target_platform",
+        }
+
+platform_to_host_transition = transition(
+    implementation = _platform_to_host_transition,
+    inputs = [],
+    outputs = ["//command_line_option:platforms"],
+)
+
 rust_library = rule(
     _rust_library_impl,
     attrs = dict(_rust_common_attrs.items() +
                  _rust_library_attrs.items()),
+    cfg = platform_to_host_transition,
     fragments = ["cpp"],
     host_fragments = ["cpp"],
     toolchains = ["@io_bazel_rules_rust//rust:toolchain"],
