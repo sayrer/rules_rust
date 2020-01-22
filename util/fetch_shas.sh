@@ -36,7 +36,7 @@ enumerate_keys() {
 
 emit_bzl_file_contents() {
   echo "$@" \
-    | parallel --trim lr -d ' ' --will-cite 'printf "%s %s\n", {}, $(curl https://static.rust-lang.org/dist/{}.tar.gz.sha256 | cut -f1 --delimiter=" ")' \
+    | parallel --trim lr -d ' ' --will-cite 'printf "%s %s\n", {}, $(curl https://static.rust-lang.org/dist/{}.tar.gz.sha256 | gcut -f1 --delimiter=" ")' \
     | sed "s/,//g" \
     > /tmp/reload_shas_shalist.txt
 
