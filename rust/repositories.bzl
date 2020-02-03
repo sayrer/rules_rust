@@ -28,7 +28,7 @@ def rust_repositories():
         exec_triple = "x86_64-unknown-linux-gnu",
         extra_target_triples = ["wasm32-unknown-unknown"],
         version = "nightly",
-        iso_date = "2020-01-21",
+        iso_date = "2020-02-01",
     )
 
     rust_repository_set(
@@ -36,7 +36,7 @@ def rust_repositories():
         exec_triple = "x86_64-apple-darwin",
         extra_target_triples = ["wasm32-unknown-unknown"],
         version = "nightly",
-        iso_date = "2020-01-21",
+        iso_date = "2020-02-01",
     )
 
     rust_repository_set(
@@ -44,7 +44,7 @@ def rust_repositories():
         exec_triple = "x86_64-unknown-freebsd",
         extra_target_triples = ["wasm32-unknown-unknown"],
         version = "nightly",
-        iso_date = "2020-01-21",
+        iso_date = "2020-02-01",
     )
 
 def _check_version_valid(version, iso_date, param_prefix = ""):
