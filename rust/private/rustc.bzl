@@ -718,7 +718,7 @@ def collect_inputs(
 
     # The old default behavior was to include data files at compile time.
     # This flag controls whether to include data files in compile_data.
-    if hasattr(files, "data") and not toolchain._incompatible_do_not_include_data_in_compile_data:
+    if not toolchain._incompatible_do_not_include_data_in_compile_data and hasattr(files, "data"):
         nolinkstamp_compile_direct_inputs += files.data
 
     if toolchain.target_json:
